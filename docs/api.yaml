@@ -5,7 +5,7 @@ servers:
 info:
   description: This is a simple API to get facts, facts about cats, meow. You can send a simple RESTful request to this enpoint and retrieve a cat fact in different languages.
   version: 0.4.10
-  title: 1Meow Facts API - Get a Random Cat Fact
+  title: ThreatLocker Portal API
   contact:
     email: admin@wh.iterabb.it
     name: API Support on Discord
@@ -75,36 +75,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/error'
-  /health:
-    get:
-      tags:
-        - public
-      summary: health check endpoint
-      operationId: healthcheck
-      description: |
-        The health check endpoint will return a status of 200 if the api is up and ready to recieve connections. It will tell the uptime, and total requests served since last restart. It also has a field for version which corresponds to the versioned release from the github repo.  
-      responses:
-        '200':
-          description: Default Health check response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/healthcheck'
-  /options:
-    get:
-      tags:
-        - public
-      summary: options discovery endpoint
-      operationId: options
-      description: |
-        This endpoint will list all languages available to the root endpoint.   
-      responses:
-        '200':
-          description: Default Options Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/optionEndpoint'
+  
 components:
   schemas:
     fact:
@@ -128,53 +99,3 @@ components:
         type:
           type: string
           example: Bad Request
-    healthcheck:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/healthcheckData'
-    healthcheckData:
-      type: object
-      properties:
-        uptime:
-          type: string
-          example: '00:00:39:45'
-        version:
-          type: string
-          example: 0.4.10
-        requests:
-          type: integer
-          format: int32
-          example: 129522
-    optionEndpoint:
-      type: object
-      properties:
-        lang:
-          type: array
-          items:
-            $ref: '#/components/schemas/optionsObject'
-    optionsObject:
-      type: object
-      properties:
-        locale_code:
-          type: string
-          example: us
-        iso_code:
-          type: string
-          example: eng-us
-        full_code:
-          type: string
-          example: eng
-        local_name:
-          type: string
-          example: United States
-        english_name:
-          type: string
-          example: english
-        full_name:
-          type: string
-          example: english (United States)
-        fact_count:
-          type: integer
-          format: int32
-          example: 90
