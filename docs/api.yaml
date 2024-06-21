@@ -18,10 +18,10 @@ tags:
     description: Operations available to the public
 paths:
   /:
-    get:
+    get: 
       tags:
         - public
-      summary: get a fact about cats, a meow fact
+      summary: Fetches all available Reports for the Organization.
       operationId: defaultRoot
       description: |
         By passing in the appropriate options, you can recieve a specific or more than one fact.
