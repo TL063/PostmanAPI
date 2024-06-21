@@ -1,27 +1,34 @@
 openapi: 3.0.0
 servers:
-  - description: Test API for Threatlocker
-    url: https://api.g.threatlocker.com/api/
+  - description: Documentation for https://meowfacts.herokuapp.com, an api for facts about cats, meow facts.
+    url: https://meowfacts.herokuapp.com
 info:
-  description: Test API for Threatlocker.
+  description: This is a simple API to get facts, facts about cats, meow. You can send a simple RESTful request to this enpoint and retrieve a cat fact in different languages.
   version: 0.4.10
   title: ThreatLocker Portal API
+  contact:
+    email: admin@wh.iterabb.it
+    name: API Support on Discord
+    url: https://top.gg/servers/1011299565674172436
+  license:
+    name: MIT License
+    url: https://github.com/wh-iterabb-it/meowfacts/blob/main/LICENSE
 tags:
   - name: public
     description: Operations available to the public
 paths:
   /:
-    get: rports?list
+    get:
       tags:
         - public
-      summary: Fetches all available Reports for the Organization
+      summary: get a fact about cats, a meow fact
       operationId: defaultRoot
       description: |
         By passing in the appropriate options, you can recieve a specific or more than one fact.
       parameters:
         - in: query
-          name: reportID
-          description: pass an optional id to call a specific report
+          name: factID
+          description: pass an optional id to call a specific fact
           required: false
           schema:
             type: string
@@ -45,7 +52,7 @@ paths:
               - rus
       responses:
         '200':
-          description: OK
+          description: You just got some meowfacts
           content:
             application/json:
               schema:
